@@ -214,6 +214,7 @@ function setupItems() {
       if (item.checkId !== currentCheckId) {
         if (item.checkId === 0) {
           createListItem(item.id, item.value, item.checkId);
+          markCount++
         } else {
           // remove from local storage
           removeFromLocalStorage(item.id);
@@ -227,7 +228,11 @@ function setupItems() {
     } else {
       container.classList.add("show-container");
     }
-    toggler(1);
+    if(markCount > 0){
+      toggler(1);
+    }else{
+      toggler(0)
+    }
   } else {
     toggler(0);
   }
